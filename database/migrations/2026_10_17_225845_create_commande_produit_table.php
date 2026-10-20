@@ -17,8 +17,13 @@ return new class extends Migration
 
             $table->decimal('prix_unitaire');
             $table->unsignedInteger('quantite');
+<<<<<<< HEAD
             $table->foreignId('produit_id')->constrained();
             $table->foreignId('commande_id')->constrained();
+=======
+            $table->foreignId('id_produit')->constrained('produits');
+            $table->foreignId('id_commande')->constrained('commandes');
+>>>>>>> page-catalogue
         });
     }
 

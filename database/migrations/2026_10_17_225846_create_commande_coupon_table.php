@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
+<<<<<<< HEAD
             $table->foreignId('commande_id')->constrained();
             $table->foreignId('coupon_id')->constrained();
+=======
+            $table->foreignId('id_commande')->constrained('commandes');
+            $table->foreignId('id_coupon')->constrained('coupons');
+>>>>>>> page-catalogue
         });
     }
 
