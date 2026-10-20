@@ -11,7 +11,7 @@
         <p class="catalogue-intro">Équipe-toi pour ta prochaine ascension !</p>
 
         <div class="produits-grid">
-            @@forelse($produits as $produit)
+            @forelse($produits as $produit)
                 <div class="produit-card">
                     <img src="{{asset('images/produits/' . $produit->image)}}" alt="{{$produit->nom}}" class="produit-image">
                     <div class="produit-info">

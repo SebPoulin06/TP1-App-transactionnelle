@@ -17,8 +17,8 @@ return new class extends Migration
 
             $table->decimal('prix_unitaire');
             $table->unsignedInteger('quantite');
-            $table->foreignId('id_produit')->constrained();
-            $table->foreignId('id_commande')->constrained();
+            $table->foreignId('id_produit')->constrained('produits');
+            $table->foreignId('id_commande')->constrained('commandes');
         });
     }
 
