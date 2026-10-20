@@ -16,13 +16,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unsignedInteger('quantiter');
-<<<<<<< HEAD
-            $table->foreignId('produit_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-=======
+
             $table->foreignId('id_produit')->constrained('produits');
             $table->foreignId('id_client')->constrained('users');
->>>>>>> page-catalogue
+
         });
     }
 

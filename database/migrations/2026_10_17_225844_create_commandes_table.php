@@ -20,11 +20,9 @@ return new class extends Migration
             $table->date('date');
             $table->string('rabais_du_paiment')->default(0);
             $table->decimal('prix_total');
-<<<<<<< HEAD
+
             $table->foreignId('user_id')->constrained();
-=======
-            $table->foreignId('id_client')->constrained('users');
->>>>>>> page-catalogue
+
         });
     }
 
