@@ -18,8 +18,8 @@ return new class extends Migration
             $table->date('date_remboursement');
             $table->unsignedInteger('quantite');
             $table->string('cause_remboursement');
-            $table->foreignId('id_commande_produit')->constrained();
-            $table->foreignId('id_statut')->constrained();
+            $table->foreignId('commande_produit_id')->constrained('commande_produit');
+            $table->foreignId('statut_id')->constrained();
         });
     }
 

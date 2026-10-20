@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->string('code');
             $table->unsignedInteger('rabais_fix')->nullable();
-            $table->decimal('rabais_%', 1, 2)->default(0);
+            $table->decimal('rabais_pourcentage', 5, 2)->nullable();
             $table->date('date_expiration');
         });
     }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('rabais_du_paiment')->default(0);
             $table->decimal('prix_total');
-            $table->foreignId('id_client')->constrained();
+            $table->foreignId('user_id')->constrained();
         });
     }
 

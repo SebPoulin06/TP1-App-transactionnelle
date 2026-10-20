@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('nom_statue');
+            $table->string('nom_statut');
             $table->boolean('rembourser')->default(false);
         });
     }
