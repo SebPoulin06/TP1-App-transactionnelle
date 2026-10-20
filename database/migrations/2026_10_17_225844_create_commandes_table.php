@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('gestionnaire_du_paiment');
+            $table->string('id_du_paiment');
+            $table->date('date');
+            $table->string('rabais_du_paiment')->default(0);
+            $table->decimal('prix_total');
+            $table->foreignId('id_client')->constrained();
         });
     }
 

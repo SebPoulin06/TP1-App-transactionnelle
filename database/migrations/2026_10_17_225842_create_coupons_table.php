@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->string('code');
+            $table->unsignedInteger('rabais_fix')->nullable();
+            $table->decimal('rabais_%', 1, 2)->default(0);
+            $table->date('date_expiration');
         });
     }
 

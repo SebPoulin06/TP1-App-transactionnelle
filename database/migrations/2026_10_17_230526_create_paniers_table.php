@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('paniers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->unsignedInteger('quantiter');
+            $table->foreignId('id_produit')->constrained();
+            $table->foreignId('id_client')->constrained();
         });
     }
 

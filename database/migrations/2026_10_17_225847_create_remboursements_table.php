@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('remboursements', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->date('date_remboursement');
+            $table->unsignedInteger('quantite');
+            $table->string('cause_remboursement');
+            $table->foreignId('id_commande_produit')->constrained();
+            $table->foreignId('id_statut')->constrained();
         });
     }
 
