@@ -6,7 +6,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+use App\Http\Controllers\ProduitController;
 
-Route::get('/catalogue', function () {
-    return view('catalogue');
-});
+Route::get('/produits', [ProduitController::class, 'index']);
+Route::get('/produit/{produit}', [ProduitController::class, 'show']);
+Route::post('/produit', [ProduitController::class, 'store']);
+Route::put('/produit/{produit}', [ProduitController::class, 'update']);
+Route::delete('/produit/{produit}', [ProduitController::class, 'destroy']);
+Route::get('/produit/{produit}/edit', [ProduitController::class, 'edit']);
