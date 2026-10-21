@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProduitController;
 
-Route::get('/', [ProduitController::class, 'index']);
+Route::get('/', [ProduitController::class, 'index'])->name('acceuil');
 
 
 

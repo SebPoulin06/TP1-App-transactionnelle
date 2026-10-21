@@ -263,6 +263,15 @@
     padding: 20px;
 }
 
+.produit-compagnie {
+    color: #6b8e5a;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
 .produit-info h2 {
     color: #1c2924;
     font-size: 21px;

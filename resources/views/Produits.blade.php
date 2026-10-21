@@ -15,9 +15,14 @@
                 <div class="produit-card">
                     <img src="{{asset('images/produits/' . $produit->image)}}" alt="{{$produit->nom}}" class="produit-image">
                     <div class="produit-info">
+
+                        <p class="produit-compagnie">{{ $produit->marque }}</p>
+
                         <h2>{{ $produit->nom }}</h2>
 
                         <p class="produit-description">{{ $produit->description }}</p>
+                        <p class="produit-description"> Quantité en stock : {{ $produit->stock }}</p>
+                        <p class="produit-description">Taille : {{ $produit->taille }}</p>
 
                         <p class="produit-prix">{{ number_format($produit->prix, 2, ',', ' ') }} $</p>
                     </div>
