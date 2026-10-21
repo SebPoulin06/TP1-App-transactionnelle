@@ -29,8 +29,14 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                @yield('content')
             </main>
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <p>Application éducative - 2026 - Collège Ahuntsic</p>
+                </div>
+            </footer>
         </div>
     </body>
 </html>

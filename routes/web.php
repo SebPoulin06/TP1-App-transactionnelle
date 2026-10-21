@@ -2,14 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 use App\Http\Controllers\ProduitController;
 
-Route::get('/produits', [ProduitController::class, 'index']);
+Route::get('/', function () {
+    redirect()->route('produits.index');
+});
+
+
+
+Route::get('/produits', [ProduitController::class, 'index'])->name('produits.index');
 Route::get('/produit/{produit}', [ProduitController::class, 'show']);
 Route::post('/produit', [ProduitController::class, 'store']);
 Route::put('/produit/{produit}', [ProduitController::class, 'update']);
