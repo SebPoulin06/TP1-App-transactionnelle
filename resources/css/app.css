@@ -3,47 +3,174 @@
 @tailwind utilities;
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-.header {
+/* ===== HEADER CLIMBLY ===== */
+
+.climbly-nav {
     background-color: #1c2924;
-    padding: 20px 40px;
+    color: white;
+    width: 100%;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.climbly-container {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 0 30px;
 }
 
-.logo {
+.climbly-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 75px;
+    gap: 25px;
+}
+
+/* Logo */
+.climbly-logo {
     color: #a3e635;
     font-size: 28px;
     font-weight: bold;
     text-decoration: none;
+    white-space: nowrap;
 }
 
-.nav-links, .nav-auth {
+.climbly-logo:hover {
+    color: #bef264;
+}
+
+/* Navigation */
+.climbly-links {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
-.nav-links a, .btn-login {
+.climbly-links a {
     color: white;
     text-decoration: none;
     font-size: 16px;
+    transition: color 0.2s;
 }
 
-.nav-links a:hover, .btn-login:hover {
+.climbly-links a:hover {
     color: #a3e635;
 }
+
+/* Authentification */
+.climbly-auth {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.climbly-login {
+    color: white;
+    text-decoration: none;
+}
+
+.climbly-login:hover {
+    color: #a3e635;
+}
+
+.climbly-register,
+.climbly-account {
+    background-color: #a3e635;
+    color: #1c2924;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.climbly-register:hover,
+.climbly-account:hover {
+    background-color: #84cc16;
+}
+
+.climbly-account span {
+    margin-left: 8px;
+}
+
+/* Menu hamburger */
+.climbly-hamburger {
+    display: none;
+    color: #a3e635;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Menu mobile */
+.climbly-mobile {
+    display: none;
+    background-color: #26382f;
+    padding: 15px 25px;
+}
+
+.climbly-mobile a,
+.climbly-mobile button {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    color: white;
+    text-decoration: none;
+    text-align: left;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.climbly-mobile a:hover,
+.climbly-mobile button:hover {
+    color: #a3e635;
+}
+
+.climbly-mobile-user {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 15px 0;
+    color: #a3e635;
+    border-top: 1px solid #405549;
+}
+
+.climbly-mobile-user small {
+    color: #c6d6c9;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .climbly-links,
+    .climbly-auth {
+        display: none;
+    }
+
+    .climbly-hamburger {
+        display: block;
+    }
+
+    .climbly-mobile[style*="display: block"] {
+        display: block;
+    }
+
+    .climbly-container {
+        padding: 0 20px;
+    }
+
+    .climbly-logo {
+        font-size: 24px;
+    }
+}
+
 
 .btn-register {
     background-color: #a3e635;
@@ -155,20 +282,4 @@
     font-weight: bold;
 }
 
-/* Adaptation tablette */
-@media (max-width: 900px) {
-    .produits-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
 
-/* Adaptation mobile */
-@media (max-width: 600px) {
-    .produits-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .catalogue {
-        padding: 30px 15px;
-    }
-}

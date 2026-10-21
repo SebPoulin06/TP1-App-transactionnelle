@@ -4,9 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProduitController;
 
-Route::get('/', function () {
-    redirect()->route('produits.index');
-});
+Route::get('/', [ProduitController::class, 'index']);
 
 
 
