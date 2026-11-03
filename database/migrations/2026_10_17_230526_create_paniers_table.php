@@ -17,8 +17,8 @@ return new class extends Migration
 
             $table->unsignedInteger('quantite');
 
-            $table->foreignId('id_produit')->constrained('produits');
-            $table->foreignId('id_client')->constrained('users');
+            $table->foreignId('produit_id')->constrained('produits');
+            $table->foreignId('user_id')->constrained('users');
 
         });
     }

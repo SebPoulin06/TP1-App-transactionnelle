@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('cause_remboursement');
 
 
-            $table->foreignId('id_commande_produit')->constrained('commande_produit');
-            $table->foreignId('id_statut')->constrained('statuts');
+            $table->foreignId('commande_produit_id')->constrained('commande_produit');
+            $table->foreignId('statut_id')->constrained('statuts');
 
         });
     }

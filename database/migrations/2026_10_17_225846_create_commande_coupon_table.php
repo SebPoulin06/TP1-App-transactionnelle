@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->foreignId('id_commande')->constrained('commandes');
-            $table->foreignId('id_coupon')->constrained('coupons');
+            $table->foreignId('commande_id')->constrained('commandes');
+            $table->foreignId('coupon_id')->constrained('coupons');
 
         });
     }
