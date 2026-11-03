@@ -363,6 +363,105 @@
     color: white;
 }
 
+.historique {
+    background-color: #f3f6f1;
+    min-height: 70vh;
+    padding: 50px 30px;
+}
+
+/* Titre */
+.historique h1 {
+    text-align: center;
+    color: #1c2924;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+/* Tableau */
+.historique table {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* En-tête du tableau */
+.historique thead {
+    background-color: #1c2924;
+    color: white;
+}
+
+.historique th {
+    padding: 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 3px solid #a3e635;
+}
+
+/* Cellules */
+.historique td {
+    padding: 18px 20px;
+    color: #365044;
+    font-size: 15px;
+    border-bottom: 1px solid #e5ebe4;
+}
+
+/* Lignes alternées */
+.historique tbody tr:nth-child(even) {
+    background-color: #f8faf7;
+}
+
+/* Effet au survol */
+.historique tbody tr:hover {
+    background-color: #edf5e4;
+    transition: background-color 0.2s ease;
+}
+
+/* Nom des produits */
+.historique td:nth-child(2) {
+    font-weight: 600;
+    color: #1c2924;
+}
+
+/* Quantité */
+.historique td:nth-child(3) {
+    text-align: center;
+}
+
+/* Prix et sous-total */
+.historique td:nth-child(4),
+.historique td:nth-child(5) {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Sous-total en vert */
+.historique td:last-child {
+    color: #365c20;
+    font-weight: bold;
+}
+
+/* Dernière ligne */
+.historique tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Panier / historique vide */
+.historique tbody tr:only-child td[colspan] {
+    text-align: center;
+    padding: 50px 20px;
+    color: #647067;
+    font-size: 17px;
+    font-weight: normal;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -402,6 +501,25 @@
     .panier-total {
         font-size: 22px;
         text-align: center;
+    }
+
+    .historique {
+        padding: 30px 15px;
+        overflow-x: auto;
+    }
+
+    .historique h1 {
+        font-size: 28px;
+    }
+
+    .historique table {
+        min-width: 650px;
+    }
+
+    .historique th,
+    .historique td {
+        padding: 14px 12px;
+        font-size: 13px;
     }
 
 }
