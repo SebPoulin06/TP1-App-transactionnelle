@@ -29,6 +29,12 @@
 
             <!-- Page Content -->
             <main>
+                @if(session('success'))
+                    <div style="background-color: lightgreen; padding: 10px; margin-bottom: 20px;">
+                       {{ session('success') }}
+                    </div>
+                @endif
+
                 @yield('content')
             </main>
 

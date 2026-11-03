@@ -24,7 +24,13 @@
                         <p class="produit-description"> Quantité en stock : {{ $produit->stock }}</p>
                         <p class="produit-description">Taille : {{ $produit->taille }}</p>
 
-                        <p class="produit-prix">{{ number_format($produit->prix, 2, ',', ' ') }} $</p>
+                        <p class="produit-prix">{{ $produit->getPrixFormateAttribute() }} $</p>
+                        <form action="{{ route('panier.ajouter', $produit->id) }}" method="POST">
+                            @csrf
+                            <label>Quantité :</label>
+                            <input type="number" name="quantite" value="1" min="1" max="10">
+                            <button type="submit">Ajouter au panier</button>
+                        </form>
                     </div>
                 </div>
 

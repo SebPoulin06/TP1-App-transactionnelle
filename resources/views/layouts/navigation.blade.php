@@ -63,6 +63,10 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
+                        <a href="{{ route('panier') }}"
+                           class="climbly-register">
+                            Panier ({{ session('panier') ? collect(session('panier'))->sum('quantite') : 0 }})
+                        </a>
                 @endauth
             </div>
 
