@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->unsignedInteger('quantiter');
+            $table->unsignedInteger('quantite');
 
             $table->foreignId('id_produit')->constrained('produits');
             $table->foreignId('id_client')->constrained('users');

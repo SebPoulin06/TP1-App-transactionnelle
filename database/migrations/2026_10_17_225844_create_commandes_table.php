@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('gestionnaire_du_paiment');
-            $table->string('id_du_paiment');
+            $table->string('gestionnaire_du_paiement');
+            $table->string('id_du_paiement');
             $table->date('date');
-            $table->string('rabais_du_paiment')->default(0);
+            $table->decimal('rabais_du_paiement')->default(0);
             $table->decimal('prix_total');
 
             $table->foreignId('user_id')->constrained();
