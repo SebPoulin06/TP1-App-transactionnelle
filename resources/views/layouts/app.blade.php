@@ -35,6 +35,18 @@
                     </div>
                 @endif
 
+                @if(session('error'))
+                    <div style="background-color: lightcoral; padding: 10px; margin-bottom: 20px;">
+                       {{ session('error') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div style="background-color: lightcoral; padding: 10px; margin-bottom: 20px;">
+                       {{ $errors->first() }}
+                    </div>
+                @endif
+
                 @yield('content')
             </main>
 
