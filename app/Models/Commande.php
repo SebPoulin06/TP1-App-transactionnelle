@@ -24,10 +24,16 @@ class Commande extends Model
     public function produits()
     {
         return $this->belongsToMany(Produit::class, 'commande_produit', 'commande_id', 'produit_id')
-            ->withPivot('prix_unitaire', 'quantite');
+            ->withPivot('id','prix_unitaire', 'quantite');
     }
 
     public function coupons(){
         return $this->belongsToMany(Coupon::class, 'commande_coupon');
+    }
+
+    public function estRemboursee()
+    {
+        $ids = $this->produits->pluck('pivot.id');
+        return Remboursement::whereIn('commande_produit_id', $ids)->exists();
     }
 }

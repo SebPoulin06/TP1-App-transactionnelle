@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produit;
 use Illuminate\Http\Request;
-use App\Models\Panier;
+use App\Models\Coupon;
 
 class PanierController extends Controller
 {
@@ -55,7 +55,15 @@ class PanierController extends Controller
         $request->validate([
             'code' => 'required|string',
         ]);
-        $cou
+        $coupon = Coupon::where('code', $request->input('code'))
+            ->where('date_expiration','>=',today()->toDateString())
+            ->first();
+
+        if (!$coupon) {
+            return redirect()->route('panier')->with('error', 'Code promo invalide ou expiré.');
+        }
+        session()->put('coupon', $coupon->id);
+        return redirect()->route('panier')->with('success','code promo applique');
     }
 
 

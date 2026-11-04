@@ -8,6 +8,7 @@ use Stripe\Checkout\Session as StripeSession;
 use App\Models\Commande;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ConfirmationCommande;
+use App\Models\Coupon;
 
 class StripeController extends Controller
 {
@@ -22,7 +23,9 @@ class StripeController extends Controller
 
 
         $lineItems = [];
+        $total = 0;
         foreach ($panier as $id => $details) {
+            $total += $details['prix'] * $details['quantite'];
             $lineItems[] = [
                 'price_data' => [
                     'currency' => 'cad',
@@ -32,12 +35,26 @@ class StripeController extends Controller
                 'quantity' => $details['quantite'],
             ];
         }
-        $checkoutSession = StripeSession::create([
-            'line_items'  => $lineItems,
-            'mode'        => 'payment',
-            'success_url' => route('stripe.succes') . '?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url'  => route('stripe.annuler'),
-        ]);
+
+        $params = [
+                'line_items'  => $lineItems,
+                'mode'        => 'payment',
+                'success_url' => route('stripe.succes') . '?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url'  => route('stripe.annuler'),
+        ];
+
+        $coupon = Coupon::find(session('coupon'));
+        if ($coupon) {
+            $stripeCoupon = \Stripe\Coupon::create([
+                'amount_off' => (int) round($coupon->calculerRabais($total) * 100),
+                'currency'   => 'cad',
+                'duration'   => 'once',
+                'name'       => $coupon->code,
+            ]);
+            $params['discounts'] = [['coupon' => $stripeCoupon->id]];
+        }
+
+        $checkoutSession = StripeSession::create($params);
 
         return redirect()->away($checkoutSession->url);
     }
@@ -59,7 +76,7 @@ class StripeController extends Controller
                 'gestionnaire_du_paiement' => 'Stripe',
                 'id_du_paiement' => $paymentIntentId,
                 'date' => now(),
-                'rabais_du_paiement' => 0,
+                'rabais_du_paiement' =>$session->total_details->amount_discount / 100,
                'prix_total' => $session->amount_total / 100,
                 'user_id' => auth()->user()->id,
 
@@ -71,6 +88,9 @@ class StripeController extends Controller
                     'quantite'      => $details['quantite'],
                 ]);
             }
+            if (session('coupon')) {
+                $commande->coupons()->attach(session('coupon'));
+            }
 
             $commande->load('produits', 'user');
 
@@ -81,8 +101,9 @@ class StripeController extends Controller
                 report($e);
             }
 
-
+            session()->forget('coupon');
             session()->forget('panier');
+
             return redirect()->route('produits.index')->with('success','Paiment stripe réussi! ( ID Transaction'.$paymentIntentId.')');
         }
         return redirect()->route('produits.index')->with('error', 'Le paiement n’a pas pu être validé.');

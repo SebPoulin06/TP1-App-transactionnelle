@@ -17,6 +17,11 @@ class Coupon extends Model
         return $this->belongsToMany(Commande::class, 'commande_coupon');
     }
 
-
-
+    public function calculerRabais($sousTotal)
+    {
+        if ($this->rabais_pourcentage) {
+            return round($sousTotal * $this->rabais_pourcentage / 100, 2);
+        }
+        return min($this->rabais_fix, $sousTotal);
     }
+}

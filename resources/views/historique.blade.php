@@ -12,6 +12,7 @@
                 <div class="commande-header">
                     <h2>Commande #{{ $commande->id }}</h2>
                     <p>{{ $commande->date }}</p>
+
                 </div>
 
                 <table>
@@ -38,6 +39,14 @@
 
                 <div class="commande-footer">
                     <strong>Total : {{ number_format($commande->prix_total,2, ',', ' ') }} $</strong>
+                    @if($commande->estRemboursee())
+                        <p>Remboursée</p>
+                    @else
+                        <form action="{{ route('commande.rembourser', $commande) }}" method="POST">
+                            @csrf
+                            <button type="submit">Demander un remboursement</button>
+                        </form>
+                    @endif
                 </div>
             </div>
         @empty

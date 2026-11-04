@@ -1,5 +1,5 @@
 @extends('layouts/app')
-
+@use('App\Models\Coupon')
 @section('titre', 'Climbly - Panier')
 
 @section('content')
@@ -42,12 +42,23 @@
             @endforelse
 
             @if(!empty($panier))
-                <form action="{{route('coupon.appliquer')}}"method="POST">
+                <form action="{{route('coupon.appliquer')}}" method="POST">
                     @csrf
                     <input type="text" name="code" placeholder="code promo">
                     <button type="submit">Appliquer</button>
                 </form>
-                <h2>Total : {{ number_format($total, 2, ',', ' ') }} $</h2>
+
+                @php
+                    $coupon = Coupon::find(session('coupon'));
+                    $rabais =$coupon ?  $coupon->calculerRabais($total):0 ;
+                @endphp
+                @if($coupon)
+                    <p>Sous-total : {{number_format($total,2,',',' ')}} $</p>
+                    <p>Code {{$coupon->code}} : -{{ number_format($rabais, 2, ',', ' ') }} $</p>
+                @endif
+
+
+                <h2>Total : {{ number_format($total-$rabais, 2, ',', ' ') }} $</h2>
                 <form action="{{ route('stripe.payer') }}" method="POST">
                     @csrf
                     <button type="submit">Payer avec Stripe</button>

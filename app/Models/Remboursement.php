@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Remboursement extends Model
 {
-    protected $fillable =[
+    protected $fillable = [
         'date_remboursement',
         'quantite',
         'cause_remboursement',
@@ -15,7 +15,10 @@ class Remboursement extends Model
     ];
 
 
-    public function statut(){
+    public function statut()
+    {
         return $this->belongsTo(Statut::class);
     }
+
+
 }

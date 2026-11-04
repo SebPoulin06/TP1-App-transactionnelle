@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\RemboursementController;
 
 Route::get('/', [ProduitController::class, 'index'])->name('acceuil');
 
@@ -22,7 +23,7 @@ Route::get('/produit/{produit}/edit', [ProduitController::class, 'edit']);
 Route::get('/panier', [PanierController::class, 'index'])->name('panier');
 Route::post('/panier/ajouter/{id}', [PanierController::class, 'ajouter'])->name('panier.ajouter');
 Route::delete('/panier/{id}', [PanierController::class, 'supprimer'])->name('panier.supprimer');
-Route::post('/panier/coupon', [PanierController::class, 'appliquerCoupon'])->name('panier.appliquer');
+Route::post('/panier/coupon', [PanierController::class, 'appliquerCoupon'])->name('coupon.appliquer');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/stripe/payer', [StripeController::class, 'payer'])->name('stripe.payer');
     Route::get('/stripe/succes', [StripeController::class, 'succes'])->name('stripe.succes');
     Route::get('/stripe/annuler', [StripeController::class, 'annuler'])->name('stripe.annuler');
+    //rembourser
+    Route::post('/commande/{commande}/rembourser', [RemboursementController::class, 'rembourser'])->name('commande.rembourser');
 
 
     //historique
