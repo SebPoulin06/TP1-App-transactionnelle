@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProduitController;
@@ -23,6 +24,12 @@ Route::post('/panier/ajouter/{id}', [PanierController::class, 'ajouter'])->name(
 Route::delete('/panier/{id}', [PanierController::class, 'supprimer'])->name('panier.supprimer');
 
 
+<<<<<<< HEAD
+=======
+//historique
+Route::get('/historique', [commandeController::class, 'historique'])->middleware(['auth', 'verified'])->name('historique');
+
+>>>>>>> 1cebdbc28b5ed11317b8eba39031be5e9f21eb42
 
 Route::get('/dashboard', function () {
     return view('dashboard');

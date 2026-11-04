@@ -31,7 +31,7 @@ class User extends Authenticatable
     }
 
     public function commandes(){
-        return $this->hasMany(Commande::class);
+        return $this->hasMany(Commande::class, 'user_id');
     }
 
 }
