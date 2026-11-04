@@ -42,7 +42,11 @@
             @endforelse
 
             @if(!empty($panier))
-                <h2 class="panier-total">Total : {{ number_format($total, 2, ',', ' ') }} $</h2>
+                <h2>Total : {{ number_format($total, 2, ',', ' ') }} $</h2>
+                <form action="{{ route('stripe.payer') }}" method="POST">
+                    @csrf
+                    <button type="submit">Payer avec Stripe</button>
+                </form>
             @endif
         </div>
 
