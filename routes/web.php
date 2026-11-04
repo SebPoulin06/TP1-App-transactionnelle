@@ -22,7 +22,7 @@ Route::get('/produit/{produit}/edit', [ProduitController::class, 'edit']);
 Route::get('/panier', [PanierController::class, 'index'])->name('panier');
 Route::post('/panier/ajouter/{id}', [PanierController::class, 'ajouter'])->name('panier.ajouter');
 Route::delete('/panier/{id}', [PanierController::class, 'supprimer'])->name('panier.supprimer');
-
+Route::post('/panier/coupon', [PanierController::class, 'appliquerCoupon'])->name('panier.appliquer');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

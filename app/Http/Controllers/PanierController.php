@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produit;
 use Illuminate\Http\Request;
+use App\Models\Panier;
 
 class PanierController extends Controller
 {
@@ -49,4 +50,14 @@ class PanierController extends Controller
         session()->flash('success', 'Produit supprimé du panier.');
         return redirect()->route('panier');
     }
+
+    public function appliquerCoupon(Request $request){
+        $request->validate([
+            'code' => 'required|string',
+        ]);
+        $cou
+    }
+
+
+
 }

@@ -42,6 +42,11 @@
             @endforelse
 
             @if(!empty($panier))
+                <form action="{{route('coupon.appliquer')}}"method="POST">
+                    @csrf
+                    <input type="text" name="code" placeholder="code promo">
+                    <button type="submit">Appliquer</button>
+                </form>
                 <h2>Total : {{ number_format($total, 2, ',', ' ') }} $</h2>
                 <form action="{{ route('stripe.payer') }}" method="POST">
                     @csrf
