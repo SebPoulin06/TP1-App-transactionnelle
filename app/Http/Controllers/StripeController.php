@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Checkout\Session as StripeSession;
 use App\Models\Commande;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmationCommande;
 
 class StripeController extends Controller
 {
@@ -70,7 +72,14 @@ class StripeController extends Controller
                 ]);
             }
 
+            $commande->load('produits', 'user');
 
+            try {
+                Mail::to($commande->user->email)
+                    ->send(new ConfirmationCommande($commande));
+            } catch (\Throwable $e) {
+                report($e);
+            }
 
 
             session()->forget('panier');
