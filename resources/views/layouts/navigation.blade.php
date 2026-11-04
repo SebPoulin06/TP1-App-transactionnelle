@@ -50,6 +50,11 @@
                                 Profil
                             </x-dropdown-link>
 
+                            <x-dropdown-link
+                                :href="route('historique')">
+                                Historique des commandes
+                            </x-dropdown-link>
+
                             <form method="POST"
                                   action="{{ route('logout') }}">
                                 @csrf

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('gestionnaire_du_paiement');
-            $table->string('id_du_paiement');
+            $table->string('id_du_paiement')->unique();
             $table->date('date');
             $table->decimal('rabais_du_paiement')->default(0);
             $table->decimal('prix_total');

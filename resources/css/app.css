@@ -463,6 +463,48 @@
 }
 
 
+
+.commande-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.commande-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.commande-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.commande-table th,
+.commande-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.commande-table th {
+    background-color: #f5f5f5;
+}
+
+.commande-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .climbly-links,
